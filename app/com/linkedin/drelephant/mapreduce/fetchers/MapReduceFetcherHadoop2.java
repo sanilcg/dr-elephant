@@ -421,7 +421,9 @@ final class ThreadContextMR2 {
   }
 
   public static JsonNode readJsonNode(URL url) throws IOException, AuthenticationException {
-    HttpURLConnection conn = _LOCAL_AUTH_URL.get().openConnection(url, _LOCAL_AUTH_TOKEN.get());
+    logger.info("The URL I am trying to access is: " + url); 
+//    HttpURLConnection conn = _LOCAL_AUTH_URL.get().openConnection(url, _LOCAL_AUTH_TOKEN.get());
+    HttpURLConnection conn = _LOCAL_AUTH_URL.get().openConnection(url);
     return _LOCAL_MAPPER.get().readTree(conn.getInputStream());
   }
 
